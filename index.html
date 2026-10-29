@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The complete expert manual for Relay Bench: mission setup, five puzzle modules, resets, controls and results.">
+<title>Relay Bench — Expert Manual 1.0, Revision 2</title>
+<style>
+:root{color-scheme:light;--ink:#172b35;--accent:#087d89;--paper:#f4f1e8;--muted:#526b74}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,sans-serif}header{background:#122a35;color:#fff;padding:44px max(24px,calc((100vw - 1000px)/2))}header small{letter-spacing:.15em;color:#79d9dc}h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:18px 0}header p{max-width:780px;color:#d0dfe2}.lead{font-size:20px}nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}nav a{color:white;border:1px solid #5b7881;padding:7px 12px;border-radius:4px;text-decoration:none;font-size:14px}a{color:var(--accent)}a:focus-visible,button:focus-visible{outline:3px solid #e8a123;outline-offset:4px}main{max-width:1050px;margin:auto;padding:24px}section{background:#fff;border:1px solid #d7ddd9;border-top:5px solid var(--accent);padding:26px 30px;margin:22px 0;border-radius:4px;scroll-margin-top:16px}h2{font-size:29px;margin:0 0 12px;line-height:1.25}h3{font-size:19px;margin:24px 0 7px}.tag{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}.note,.reset{padding:13px 17px;background:#edf6f4;border-left:4px solid var(--accent);margin:18px 0}.reset{background:#fff4e5;border-color:#bc7520}.readout{font-weight:650;background:#f0f3f2;padding:12px 16px;border-radius:3px}.order{font-size:clamp(16px,2.6vw,22px);font-weight:750;background:#edf3f2;padding:16px;line-height:1.8}table{width:100%;border-collapse:collapse;margin:16px 0}caption{text-align:left;color:var(--muted);font-size:14px;margin-bottom:8px}th,td{text-align:left;vertical-align:top;padding:11px;border-bottom:1px solid #dbe3e2}th{background:#edf3f2}li{margin:9px 0}.example{color:#304c57}footer{max-width:1000px;margin:24px auto;padding:0 24px 35px;font-size:13px;color:var(--muted)}button{padding:10px 16px;background:var(--accent);color:white;border:0;border-radius:4px;font:inherit;cursor:pointer}.top{font-size:13px;display:inline-block;margin-top:10px}.table-wrap{overflow-x:auto}@media(max-width:600px){main{padding:12px}section{padding:20px 17px}th,td{padding:8px;font-size:15px}header{padding:30px 20px}}@media print{html{scroll-behavior:auto}body{background:white;font-size:10.5pt}header{padding:8mm 0;background:white;color:var(--ink)}header small,header p{color:var(--ink)}h1{font-size:30pt}nav,button,.top{display:none}main{padding:0;max-width:none}section{break-inside:avoid;margin:5mm 0;padding:5mm;border-top-width:2px}h2{font-size:20pt}h3{font-size:13pt}.order{font-size:13pt}.table-wrap{overflow:visible}footer{padding:0}a{color:inherit}}
+</style>
+</head>
+<body>
+<header id="top">
+<small>EXPERT MANUAL 1.0 / REVISION 2</small>
+<h1>RELAY BENCH</h1>
+<p class="lead">The operator sees the hardware. The expert has the rules. Talk clearly, check the clues, and secure every module before the clock reaches zero.</p>
+<p>Matches the five module rules and redesigned controls in development build v1.4. The game's “MANUAL v1.0” label refers to these same rules.</p>
+<nav aria-label="Manual sections"><a href="#briefing">Start here</a><a href="#direction">Direction Relay</a><a href="#wires">Wire Bank</a><a href="#power">Power Array</a><a href="#symbols">Symbol Order</a><a href="#pulse">Pulse Lock</a><a href="#reference">Resets &amp; results</a></nav>
+</header>
+<main>
+<section id="briefing">
+<div class="tag">00 / Mission briefing</div><h2>Before the mission</h2>
+<p>The <strong>operator</strong> wears the Quest headset and reads the clues on the workbench. The <strong>expert</strong> reads this manual on another screen or on paper and gives instructions by voice. No connected expert app is required. For the intended challenge, the expert should not watch the operator's headset view.</p>
+<h3>Choose and start</h3>
+<div class="table-wrap"><table><caption>Preset settings; these can be changed before arming.</caption><thead><tr><th scope="col">Preset</th><th scope="col">Time</th><th scope="col">Modules</th></tr></thead><tbody><tr><td>TRAIN / 2</td><td>6 minutes</td><td>2</td></tr><tr><td>STANDARD / 3</td><td>5 minutes</td><td>3</td></tr><tr><td>EXPERT / 3</td><td>3 minutes</td><td>3</td></tr></tbody></table></div>
+<ol><li>Select a preset to open its briefing. Choosing a preset applies its default time and module count.</li><li>For a custom mission, use the <strong>MISSION TIMER</strong> and <strong>MODULE COUNT</strong> minus/plus controls in the lobby or briefing. Time ranges from <strong>30 seconds to 20 minutes</strong> in 30-second steps. Module count ranges from <strong>1 to 12</strong>. Changing these settings prepares a CUSTOM briefing.</li><li>When both players are ready, press the selected green <strong>BEGIN TRAIN</strong>, <strong>BEGIN STANDARD</strong>, <strong>BEGIN EXPERT</strong>, or <strong>BEGIN CUSTOM</strong> control. A <strong>three-second arming countdown</strong> runs before the clues appear and the mission timer starts.</li><li>Read the <strong>serial number</strong> between the timer and strike readout. Rules use its <strong>final digit</strong>. Even digits are <strong>0, 2, 4, 6, 8</strong>; odd digits are <strong>1, 3, 5, 7, 9</strong>.</li></ol>
+<h3>Operate the console</h3>
+<p>Point at a control and press the <strong>index-finger trigger</strong>. Either controller works. Release the trigger fully between presses. Middle-finger grip is not the puzzle-button input. Select the toggle controls to change them; no physical grabbing or cutting tool is needed.</p>
+<p>Only <strong>three modules are visible per page</strong>. With more than three modules, use <strong>&lt; PAGE</strong> and <strong>PAGE &gt;</strong> at the rear corners of the console. Pages wrap around. Progress and switch positions are preserved, and the clock keeps running. Any module can be solved first.</p>
+<p class="readout">Suggested callout: “Module 4, Wire Bank. Serial ends in 8. Wires one to four are CYAN, WHITE, AMBER, VIOLET.”</p>
+<p>Each group of five generated modules contains all five types once. Types can repeat on larger missions, with fresh clues. Always include the printed <strong>module number</strong> in callouts.</p>
+<p class="note"><strong>Three strikes or zero time ends the mission.</strong> The countdown does not pause for page changes, the Meta menu, or removing the headset. A solved module shows <strong>SECURED</strong> and ignores further inputs.</p>
+<button type="button" onclick="window.print()">Print manual</button>
+</section>
+
+<section id="direction">
+<div class="tag">01 / Dial, emblem and four numbered buttons</div><h2>Direction Relay</h2>
+<p><strong>Identify:</strong> a metal dial with an engraved emblem, a printed emblem name and START number, four numbered buttons, and three progress lamps.</p>
+<p class="readout">Ask for: emblem (SUN, MOON or STAR), START number, and final serial digit.</p>
+<table><thead><tr><th scope="col">Emblem</th><th scope="col">Use this number order</th></tr></thead><tbody><tr><td>SUN</td><td>Forward: 1 → 2 → 3 → 4 → 1</td></tr><tr><td>MOON</td><td>Backward: 4 → 3 → 2 → 1 → 4</td></tr><tr><td>STAR</td><td>Even final serial digit: forward.<br>Odd final serial digit: backward.</td></tr></tbody></table>
+<p>Press the printed <strong>START number</strong>, then the <strong>next two numbers</strong> in the chosen order. This is exactly <strong>three presses</strong>. Use the button numbers; the dial itself does not turn or accept input.</p>
+<p class="example"><strong>Example:</strong> MOON / START 1 → press <strong>1, 4, 3</strong>.<br><strong>Example:</strong> STAR / START 4 / serial ending 0 → press <strong>4, 1, 2</strong>.</p>
+<p>Correct intermediate presses show ACCEPTED and light the progress indicators.</p>
+<p class="reset"><strong>Wrong press:</strong> one strike, and the entire sequence resets. The wrong press is not reused as a new starting press. Begin again with the printed START number. The emblem and START number do not change.</p>
+<a class="top" href="#top">Back to contents</a>
+</section>
+
+<section id="wires">
+<div class="tag">02 / Four colored cables and CUT controls</div><h2>Wire Bank</h2>
+<p><strong>Identify:</strong> four curved cables with terminal sockets, numbered color tags, and CUT controls. The possible colors are <strong>CYAN, AMBER, WHITE and VIOLET</strong>.</p>
+<p class="readout">Ask for: all four colors by wire number, and final serial digit.</p>
+<p>Apply the <strong>first matching rule</strong> below:</p>
+<ol><li>If there is <strong>exactly one WHITE</strong> wire, cut that wire. This takes priority over the serial rules.</li><li>Otherwise, if the final serial digit is <strong>even</strong>, cut the <strong>lowest-numbered AMBER</strong> wire. If there are no AMBER wires, cut <strong>wire 2</strong>.</li><li>Otherwise, the final serial digit is odd: cut the <strong>highest-numbered CYAN</strong> wire. If there are no CYAN wires, cut <strong>wire 3</strong>.</li></ol>
+<p>Select the matching <strong>CUT number</strong> with the index trigger. The numbered wire row is also selectable. A single correct selection secures the module and visibly separates that cable. Do not cut every wire.</p>
+<p class="example"><strong>Example:</strong> WHITE, AMBER, CYAN, WHITE; serial ends in 8 → there are two WHITE wires, so use the even rule and cut <strong>2</strong>.<br><strong>Example:</strong> VIOLET, CYAN, AMBER, CYAN; serial ends in 7 → cut <strong>4</strong>, the highest-numbered CYAN wire.</p>
+<p class="reset"><strong>Wrong cut:</strong> one strike. The module remains available with the same colors and target. Recheck the rules and try the correct wire.</p>
+<a class="top" href="#top">Back to contents</a>
+</section>
+
+<section id="power">
+<div class="tag">03 / Three toggle levers and CHECK POWER</div><h2>Power Array</h2>
+<p><strong>Identify:</strong> a CHANNEL number, three metal toggle levers labeled A, B and C, ON/OFF readouts, and a <strong>CHECK POWER</strong> button.</p>
+<p class="readout">Ask for: CHANNEL number (1–8) and final serial digit.</p>
+<table><thead><tr><th scope="col">Switch</th><th scope="col">Set ON when…</th><th scope="col">Otherwise</th></tr></thead><tbody><tr><td>A</td><td>The CHANNEL number is even.</td><td>OFF</td></tr><tr><td>B</td><td>The CHANNEL number is 5, 6, 7 or 8.</td><td>OFF</td></tr><tr><td>C</td><td>The final serial digit is even.</td><td>OFF</td></tr></tbody></table>
+<p>All three switches begin <strong>OFF</strong>. Select a switch to toggle it. The lever position, color and printed ON/OFF readout update together. Once all three settings match the table, press <strong>CHECK POWER</strong>.</p>
+<p class="example"><strong>Example:</strong> CHANNEL 6 / serial ending 7 → <strong>A ON, B ON, C OFF</strong>, then CHECK POWER.<br><strong>Example:</strong> CHANNEL 3 / serial ending 0 → <strong>A OFF, B OFF, C ON</strong>, then CHECK POWER.</p>
+<p class="reset"><strong>Incorrect CHECK POWER:</strong> one strike. Switch positions are <strong>preserved</strong>; adjust them before checking again. Toggling switches by itself never adds a strike.</p>
+<a class="top" href="#top">Back to contents</a>
+</section>
+
+<section id="symbols">
+<div class="tag">04 / Engraved keys and ALPHA/BETA plate</div><h2>Symbol Order</h2>
+<p><strong>Identify:</strong> a plate marked ALPHA or BETA, three engraved symbol keys with word labels, and three progress lamps. Available symbols are <strong>SUN, MOON, STAR, WAVE, LEAF and RING</strong>.</p>
+<p class="readout">Ask for: plate name and the three displayed symbol names.</p>
+<h3>ALPHA priority — read left to right</h3>
+<div class="order">RING → LEAF → SUN → WAVE → MOON → STAR</div>
+<h3>BETA priority — read left to right</h3>
+<div class="order">STAR → MOON → WAVE → SUN → LEAF → RING</div>
+<p>Use the matching priority list. <strong>Skip every symbol that is not displayed.</strong> Press the three displayed symbols in the resulting order, regardless of where their keys sit on the panel. Each key is used exactly once.</p>
+<p class="example"><strong>Example:</strong> ALPHA with STAR, SUN and RING → press <strong>RING, SUN, STAR</strong>.<br><strong>Example:</strong> BETA with LEAF, WAVE and MOON → press <strong>MOON, WAVE, LEAF</strong>.</p>
+<p class="reset"><strong>Wrong symbol:</strong> one strike, and the whole sequence resets. The plate and symbols stay the same. Press all three again in the correct order; do not resume from the last correct key.</p>
+<a class="top" href="#top">Back to contents</a>
+</section>
+
+<section id="pulse">
+<div class="tag">05 / Flashing optical lens and badge</div><h2>Pulse Lock</h2>
+<p><strong>Identify:</strong> a circular lens with metal bezel and cooling fins, a badge marked AZURE or LIME, and four numbered buttons.</p>
+<p class="readout">Ask for: badge name, and flashes in one complete group.</p>
+<p>Count the <strong>central lens</strong> flashes. Each group has <strong>1–4 flashes</strong>, followed by a longer pause, and repeats. If observation starts halfway through a group, wait for the long pause and count the next complete group.</p>
+<table><thead><tr><th scope="col">Flashes per group</th><th scope="col">AZURE: press</th><th scope="col">LIME: press</th></tr></thead><tbody><tr><td>1</td><td>4</td><td>2</td></tr><tr><td>2</td><td>1</td><td>4</td></tr><tr><td>3</td><td>3</td><td>1</td></tr><tr><td>4</td><td>2</td><td>3</td></tr></tbody></table>
+<p>Press the <strong>single number</strong> from the table. The number is not necessarily the flash count. The badge's <strong>written name</strong> selects the column; room lighting and the lamp's color do not.</p>
+<p class="example"><strong>Example:</strong> LIME / three flashes → press <strong>1</strong>.<br><strong>Example:</strong> AZURE / one flash → press <strong>4</strong>.</p>
+<p class="reset"><strong>Wrong number:</strong> one strike. The badge and flash count stay the same. Observe another group if needed, then try again.</p>
+<a class="top" href="#top">Back to contents</a>
+</section>
+
+<section id="reference">
+<div class="tag">06 / Quick reference</div><h2>Resets, results and returning</h2>
+<table><thead><tr><th scope="col">Module</th><th scope="col">What a mistake does</th></tr></thead><tbody><tr><td>Direction Relay</td><td>Adds one strike; resets all sequence progress.</td></tr><tr><td>Wire Bank</td><td>Adds one strike; colors and correct target stay the same.</td></tr><tr><td>Power Array</td><td>Only an incorrect CHECK POWER adds a strike; switch positions stay as set.</td></tr><tr><td>Symbol Order</td><td>Adds one strike; resets all sequence progress.</td></tr><tr><td>Pulse Lock</td><td>Adds one strike; badge and flash pattern stay the same.</td></tr></tbody></table>
+<h3>Lobby and replay</h3>
+<p><strong>LOBBY</strong> returns immediately from briefing or results. During the arming countdown or a running mission, press LOBBY, then <strong>CONFIRM LOBBY within three seconds</strong> to abandon the mission. A running timer continues until confirmed. If confirmation expires, begin the two-press confirmation again.</p>
+<p><strong>REPLAY</strong> prepares the last mission actually played, preserving its board, timer and module count. Press <strong>BEGIN REPLAY</strong> to arm it. Editing the timer or module count instead prepares a new custom board. Selecting a preset applies that preset's defaults. A board number is shown for identification; this release has no board-number entry control.</p>
+<h3>Success</h3>
+<p>Secure <strong>every module across every page</strong> to win. The timer stops, station lighting turns green, and the vault door lifts to reveal a reward chamber with gold bars and a floating golden relay core. Each win adds <strong>one cosmetic core</strong> to the locally saved collection, including practice replays. No movement into the vault or manual reward pickup is needed.</p>
+<table><thead><tr><th scope="col">Grade</th><th scope="col">Requirement on a completed mission</th></tr></thead><tbody><tr><td>S</td><td>No strikes, with at least half the selected time remaining.</td></tr><tr><td>A</td><td>No strikes, with less than half the selected time remaining.</td></tr><tr><td>B</td><td>One strike.</td></tr><tr><td>C</td><td>Two strikes.</td></tr></tbody></table>
+<p>Best completion times are saved locally for each <strong>timer/module-count combination</strong>. Replays count toward those practice records. The displayed completion streak is for the current app session; a failed mission resets it.</p>
+<h3>Failure</h3>
+<p>Zero time or a third strike ends the mission. Unsolved modules lock. A containment cage drops, gas streams downward, and the monitors report <strong>OPERATOR DOWN / REMOTE PANEL ACTIVE</strong>. These are presentation effects: tracking and the control pad remain available. Choose REPLAY, a new mission, or LOBBY. Returning to the lobby or preparing another mission clears the containment effects.</p>
+<h3>Sound</h3>
+<p>In the lobby or briefing, <strong>EFFECTS VOLUME</strong> changes volume from 0% to 100% in 25% steps. <strong>SOUND ON/OFF</strong> on the lower-left console edge toggles mute, including during play. Muting does not pause the timer or hide visual clues. Volume and mute state are saved on the headset; turning sound back on from zero restores 75% volume.</p>
+<p>The countdown cues become more frequent in the last minute. Use the visible timer for exact time remaining. The Pulse Lock puzzle is read from its lens, not from the countdown sounds.</p>
+<a class="top" href="#top">Back to contents</a>
+</section>
+</main>
+<footer>RELAY BENCH • Expert Manual 1.0, Revision 2 • Verified against installed development build v1.4 rules and controls. Self-contained HTML: no external assets or network connection required. Print from the button above or your browser's print command.</footer>
+</body>
+</html>
