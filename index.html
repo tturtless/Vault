@@ -2,14 +2,55 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="The complete expert manual for Relay Bench: mission setup, five puzzle modules, resets, controls and results.">
 <title>Relay Bench — Expert Manual 1.0, Revision 2</title>
 <style>
 :root{color-scheme:light;--ink:#172b35;--accent:#087d89;--paper:#f4f1e8;--muted:#526b74}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,sans-serif}header{background:#122a35;color:#fff;padding:44px max(24px,calc((100vw - 1000px)/2))}header small{letter-spacing:.15em;color:#79d9dc}h1{font-size:clamp(34px,6vw,62px);line-height:1.05;margin:18px 0}header p{max-width:780px;color:#d0dfe2}.lead{font-size:20px}nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}nav a{color:white;border:1px solid #5b7881;padding:7px 12px;border-radius:4px;text-decoration:none;font-size:14px}a{color:var(--accent)}a:focus-visible,button:focus-visible{outline:3px solid #e8a123;outline-offset:4px}main{max-width:1050px;margin:auto;padding:24px}section{background:#fff;border:1px solid #d7ddd9;border-top:5px solid var(--accent);padding:26px 30px;margin:22px 0;border-radius:4px;scroll-margin-top:16px}h2{font-size:29px;margin:0 0 12px;line-height:1.25}h3{font-size:19px;margin:24px 0 7px}.tag{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}.note,.reset{padding:13px 17px;background:#edf6f4;border-left:4px solid var(--accent);margin:18px 0}.reset{background:#fff4e5;border-color:#bc7520}.readout{font-weight:650;background:#f0f3f2;padding:12px 16px;border-radius:3px}.order{font-size:clamp(16px,2.6vw,22px);font-weight:750;background:#edf3f2;padding:16px;line-height:1.8}table{width:100%;border-collapse:collapse;margin:16px 0}caption{text-align:left;color:var(--muted);font-size:14px;margin-bottom:8px}th,td{text-align:left;vertical-align:top;padding:11px;border-bottom:1px solid #dbe3e2}th{background:#edf3f2}li{margin:9px 0}.example{color:#304c57}footer{max-width:1000px;margin:24px auto;padding:0 24px 35px;font-size:13px;color:var(--muted)}button{padding:10px 16px;background:var(--accent);color:white;border:0;border-radius:4px;font:inherit;cursor:pointer}.top{font-size:13px;display:inline-block;margin-top:10px}.table-wrap{overflow-x:auto}@media(max-width:600px){main{padding:12px}section{padding:20px 17px}th,td{padding:8px;font-size:15px}header{padding:30px 20px}}@media print{html{scroll-behavior:auto}body{background:white;font-size:10.5pt}header{padding:8mm 0;background:white;color:var(--ink)}header small,header p{color:var(--ink)}h1{font-size:30pt}nav,button,.top{display:none}main{padding:0;max-width:none}section{break-inside:avoid;margin:5mm 0;padding:5mm;border-top-width:2px}h2{font-size:20pt}h3{font-size:13pt}.order{font-size:13pt}.table-wrap{overflow:visible}footer{padding:0}a{color:inherit}}
+
+/* Persistent category navigation: safe-area spacing supports phone/tablet cutouts. */
+body{padding-top:calc(62px + env(safe-area-inset-top,0px))}
+.quickbar{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:16px;min-height:62px;padding:calc(7px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 7px max(16px,env(safe-area-inset-left,0px));background:#122a35;color:#fff;box-shadow:0 2px 12px #0003}
+.quickbar .menu-button{display:flex;align-items:center;gap:12px;min-height:46px;padding:8px 13px;border:1px solid #597984;background:#1c3c49;border-radius:6px;font-size:16px;font-weight:650;flex-shrink:0}
+.hamburger{width:22px;display:flex;flex-direction:column;gap:5px}.hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px}
+.quickbar-title{font-size:14px;line-height:1.3;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#d4e7e9}.quickbar-brand{margin-left:auto;color:#83c9ce;font-size:12px;letter-spacing:.12em;white-space:nowrap}
+section,header#top{scroll-margin-top:calc(84px + env(safe-area-inset-top,0px))}
+.category-drawer{position:fixed;inset:0 auto 0 0;margin:0;padding:0;border:0;border-right:1px solid #47626d;width:340px;width:min(340px,calc(100vw - 28px));max-width:none;height:100%;height:100dvh;max-height:none;background:#122a35;color:#fff;box-shadow:8px 0 40px #0004;overscroll-behavior:contain}
+.category-drawer[open]{display:flex;flex-direction:column}.category-drawer::backdrop{background:rgb(7 20 27 / 55%)}
+.drawer-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:calc(18px + env(safe-area-inset-top,0px)) 20px 18px;border-bottom:1px solid #36525f}.drawer-heading p{margin:0;font-size:12px;letter-spacing:.13em;color:#83c9ce}.drawer-heading h2{font-size:24px;margin:4px 0 0}
+.drawer-close{min-width:46px;min-height:46px;padding:6px;background:#244754;border:1px solid #577580;font-size:27px;line-height:1;border-radius:6px;flex-shrink:0}
+.category-drawer nav{display:flex;flex-direction:column;flex-wrap:nowrap;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;min-height:0;gap:8px;margin:0;padding:20px 14px;flex:1}
+.category-drawer nav a{display:flex;align-items:center;gap:12px;min-height:50px;padding:12px;border:1px solid transparent;border-radius:6px;font-size:16px;line-height:1.35;color:#e4eef0;text-decoration:none}
+.category-drawer nav a:hover{background:#224552}.category-drawer nav a[aria-current="location"]{background:#245b64;border-color:#62c6ce;color:#fff}
+.category-drawer nav .category-number{font-size:12px;color:#8fb9c2;font-variant-numeric:tabular-nums}.drawer-footer{margin:0;padding:16px 20px calc(18px + env(safe-area-inset-bottom,0px));border-top:1px solid #36525f;font-size:13px;color:#adc8cf}
+section:focus{outline:none}
+@media(max-width:520px){.quickbar{gap:12px}.quickbar-brand{display:none}.quickbar-title{font-size:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{padding-top:0!important;position:static!important}.quickbar,.category-drawer{display:none!important}section,header#top{scroll-margin-top:0}}
+
 </style>
 </head>
 <body>
+
+<div class="quickbar" role="banner" aria-label="Quick category navigation">
+  <button class="menu-button" id="category-toggle" type="button" aria-controls="category-drawer" aria-expanded="false" aria-haspopup="dialog"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span><span>Categories</span></button>
+  <span class="quickbar-title" id="current-category">Start here</span><span class="quickbar-brand">RELAY BENCH</span>
+</div>
+<dialog class="category-drawer" id="category-drawer" aria-labelledby="drawer-title">
+  <div class="drawer-heading"><div><p>RELAY BENCH / EXPERT MANUAL</p><h2 id="drawer-title">Quick switch</h2></div><button class="drawer-close" id="category-close" type="button" aria-label="Close category menu">&times;</button></div>
+  <nav aria-label="Quick manual categories">
+    <a href="#briefing" aria-current="location"><span class="category-number" aria-hidden="true">00</span>Start here</a>
+    <a href="#direction"><span class="category-number" aria-hidden="true">01</span>Direction Relay</a>
+    <a href="#wires"><span class="category-number" aria-hidden="true">02</span>Wire Bank</a>
+    <a href="#power"><span class="category-number" aria-hidden="true">03</span>Power Array</a>
+    <a href="#symbols"><span class="category-number" aria-hidden="true">04</span>Symbol Order</a>
+    <a href="#pulse"><span class="category-number" aria-hidden="true">05</span>Pulse Lock</a>
+    <a href="#reference"><span class="category-number" aria-hidden="true">06</span>Resets &amp; results</a>
+  </nav>
+  <p class="drawer-footer">Choose a category to jump to its rules. The menu button stays at the top while you scroll.</p>
+</dialog>
+<noscript><style>.quickbar{display:none}body{padding-top:0}</style></noscript>
+
 <header id="top">
 <small>EXPERT MANUAL 1.0 / REVISION 2</small>
 <h1>RELAY BENCH</h1>
@@ -113,5 +154,82 @@
 </section>
 </main>
 <footer>RELAY BENCH • Expert Manual 1.0, Revision 2 • Verified against installed development build v1.4 rules and controls. Self-contained HTML: no external assets or network connection required. Print from the button above or your browser's print command.</footer>
+
+<script>
+(() => {
+  'use strict';
+  const toggle = document.getElementById('category-toggle');
+  const drawer = document.getElementById('category-drawer');
+  const close = document.getElementById('category-close');
+  const links = Array.from(drawer.querySelectorAll('nav a'));
+  const sections = links.map(link => document.getElementById(link.hash.slice(1)));
+  const title = document.getElementById('current-category');
+  let savedScroll = 0;
+  let savedStyles = null;
+  let destination = null;
+  let scheduled = false;
+  function markCurrent() {
+    scheduled = false;
+    const threshold = document.querySelector('.quickbar').getBoundingClientRect().bottom + 30;
+    let active = sections[0];
+    sections.forEach(section => { if (section.getBoundingClientRect().top <= threshold) active = section; });
+    links.forEach(link => {
+      const selected = link.hash === '#' + active.id;
+      if (selected) {
+        link.setAttribute('aria-current', 'location');
+        title.textContent = link.lastChild.textContent.trim();
+      } else link.removeAttribute('aria-current');
+    });
+  }
+  function openMenu() {
+    if (drawer.open) return;
+    if (typeof drawer.showModal !== 'function') { document.getElementById('top').scrollIntoView(); return; }
+    markCurrent();
+    savedScroll = window.scrollY;
+    const style = document.body.style;
+    savedStyles = { position: style.position, top: style.top, width: style.width };
+    style.position = 'fixed'; style.top = '-' + savedScroll + 'px'; style.width = '100%';
+    drawer.showModal(); toggle.setAttribute('aria-expanded', 'true');
+    close.focus();
+  }
+  toggle.addEventListener('click', openMenu);
+  close.addEventListener('click', () => drawer.close());
+  drawer.addEventListener('click', event => {
+    if (event.target !== drawer) return;
+    const bounds = drawer.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) drawer.close();
+  });
+  drawer.addEventListener('close', () => {
+    toggle.setAttribute('aria-expanded', 'false');
+    if (savedStyles) {
+      Object.assign(document.body.style, savedStyles); savedStyles = null;
+      // Temporarily disable smooth scrolling when restoring the locked page position.
+      const root = document.documentElement;
+      const previous = root.style.scrollBehavior; root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, savedScroll); root.style.scrollBehavior = previous;
+    }
+    if (destination) {
+      const target = destination; destination = null;
+      try { history.pushState(null, '', '#' + target.id); } catch (_) { location.hash = target.id; }
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.setAttribute('tabindex', '-1');
+      target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+      target.focus({ preventScroll: true });
+    } else toggle.focus({ preventScroll: true });
+  });
+  links.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault(); destination = document.getElementById(link.hash.slice(1)); drawer.close();
+  }));
+  window.addEventListener('scroll', () => {
+    if (drawer.open || scheduled) return;
+    scheduled = true; requestAnimationFrame(markCurrent);
+  }, { passive: true });
+  window.addEventListener('resize', () => { if (!drawer.open) markCurrent(); });
+  window.addEventListener('hashchange', () => requestAnimationFrame(markCurrent));
+  window.addEventListener('beforeprint', () => { if (drawer.open) drawer.close(); });
+  markCurrent();
+})();
+</script>
+
 </body>
 </html>
